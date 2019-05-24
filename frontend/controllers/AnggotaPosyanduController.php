@@ -126,4 +126,8 @@ class AnggotaPosyanduController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public  function buatKoneksi(){
+        $koneksi = mysqli_connect("localhost","root","","frontend/views/perkembangan-kesehatan");
+    }
 }

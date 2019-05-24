@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_petugas',
             'peran_petugas',
             'no_hp_petugas',
-            'foto_petugas',
             'tgl_daftar',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -77,7 +77,6 @@ class AnggotaPosyandu extends \yii\db\ActiveRecord
             'pekerjaan' => 'Pekerjaan',
             'no_hp' => 'No Hp',
             'no_hp_orangtua' => 'No Hp Orangtua',
-            //'foto_anggota' => 'Foto Anggota',
             'tgl_pendaftaran' => 'Tgl Pendaftaran',
             'file' => 'Foto Anggota'
         ];

@@ -72,8 +72,7 @@ class AnggotaPosyanduSearch extends AnggotaPosyandu
             ->andFilterWhere(['like', 'nama_suami', $this->nama_suami])
             ->andFilterWhere(['like', 'pekerjaan', $this->pekerjaan])
             ->andFilterWhere(['like', 'no_hp', $this->no_hp])
-            ->andFilterWhere(['like', 'no_hp_orangtua', $this->no_hp_orangtua])
-            ->andFilterWhere(['like', 'foto_anggota', $this->foto_anggota]);
+            ->andFilterWhere(['like', 'no_hp_orangtua', $this->no_hp_orangtua]);
 
         return $dataProvider;
     }

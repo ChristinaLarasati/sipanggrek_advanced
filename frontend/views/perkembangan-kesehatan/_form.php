@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datepicker\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\PerkembanganKesehatan */
@@ -24,7 +25,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'keluhan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tgl_pemeriksaan')->textInput() ?>
+    <?= $form->field($model, 'tgl_pemeriksaan')->widget(
+        DatePicker::className(), [
+        // inline too, not bad
+        'inline' => false, 
+         // modify template for custom rendering
+         //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+         'clientOptions' => [
+             'autoclose' => true,
+             'format' => 'yyyy-mm-dd'
+             ]
+    ]); ?>
 
     <?= $form->field($model, 'pemeriksa')->textInput(['maxlength' => true]) ?>
 

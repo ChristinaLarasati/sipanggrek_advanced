@@ -23,8 +23,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'no_hp_petugas') ?>
 
-    <?= $form->field($model, 'foto_petugas') ?>
-
     <?php // echo $form->field($model, 'tgl_daftar') ?>
 
     <div class="form-group">

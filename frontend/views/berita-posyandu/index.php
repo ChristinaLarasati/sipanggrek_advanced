@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_berita',
             'judul',
-            'isi_berita',
-            'tgl_unggah',
+            //'isi_berita',
+          //  'tgl_unggah',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

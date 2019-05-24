@@ -42,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'pekerjaan',
             'no_hp',
             'no_hp_orangtua',
-            'foto_anggota',
             'tgl_pendaftaran',
         ],
     ]) ?>

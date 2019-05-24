@@ -63,8 +63,7 @@ class PetugasPosyanduSearch extends PetugasPosyandu
         $query->andFilterWhere(['like', 'nik_petugas', $this->nik_petugas])
             ->andFilterWhere(['like', 'nama_petugas', $this->nama_petugas])
             ->andFilterWhere(['like', 'peran_petugas', $this->peran_petugas])
-            ->andFilterWhere(['like', 'no_hp_petugas', $this->no_hp_petugas])
-            ->andFilterWhere(['like', 'foto_petugas', $this->foto_petugas]);
+            ->andFilterWhere(['like', 'no_hp_petugas', $this->no_hp_petugas]);
 
         return $dataProvider;
     }

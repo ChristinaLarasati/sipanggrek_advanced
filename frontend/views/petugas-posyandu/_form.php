@@ -25,8 +25,6 @@ use frontend\models\Role;
 
     <?= $form->field($model, 'no_hp_petugas')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'foto_petugas')->fileInput() ?>
-
     <?= $form->field($model, 'tgl_daftar')->textInput() ?>
 
     <div class="form-group">

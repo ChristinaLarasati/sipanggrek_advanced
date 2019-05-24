@@ -54,8 +54,6 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'no_hp_orangtua')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'foto_anggota')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'tgl_pendaftaran')->textInput() ?>
 
     <div class="form-group">

@@ -55,7 +55,6 @@ class PetugasPosyandu extends \yii\db\ActiveRecord
             'nama_petugas' => 'Nama Petugas',
             'peran_petugas' => 'Peran Petugas',
             'no_hp_petugas' => 'No Hp Petugas',
-            'foto_petugas' => 'Foto Petugas',
             'tgl_daftar' => 'Tgl Daftar',
         ];
     }

@@ -41,8 +41,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'no_hp_orangtua') ?>
 
-    <?php // echo $form->field($model, 'foto_anggota') ?>
-
     <?php // echo $form->field($model, 'tgl_pendaftaran') ?>
 
     <div class="form-group">

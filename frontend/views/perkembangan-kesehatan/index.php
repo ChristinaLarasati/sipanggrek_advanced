@@ -45,31 +45,32 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= ChartJs::widget([
     'type' => 'line',
     'options' => [
-        'height' => 400,
-        'width' => 400
+        'height' => 150,
+        'width' => 300
     ],
     'data' => [
-        'labels' => ["January", "February", "March", "April", "May", "June", "July"],
+        'labels' => ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",
+                    "September", "Oktober", "November", "Desember"],
         'datasets' => [
             [
-                'label' => "My First dataset",
+                'label' => "Berat Badan",
                 'backgroundColor' => "rgba(179,181,198,0.2)",
                 'borderColor' => "rgba(179,181,198,1)",
                 'pointBackgroundColor' => "rgba(179,181,198,1)",
                 'pointBorderColor' => "#fff",
                 'pointHoverBackgroundColor' => "#fff",
                 'pointHoverBorderColor' => "rgba(179,181,198,1)",
-                'data' => [65, 59, 90, 81, 56, 55, 40]
+                'data' => [10,12,15,17,19,23,25,27,29,31,35,36]
             ],
             [
-                'label' => "My Second dataset",
+                'label' => "Tinggi Badan",
                 'backgroundColor' => "rgba(255,99,132,0.2)",
                 'borderColor' => "rgba(255,99,132,1)",
                 'pointBackgroundColor' => "rgba(255,99,132,1)",
                 'pointBorderColor' => "#fff",
                 'pointHoverBackgroundColor' => "#fff",
                 'pointHoverBorderColor' => "rgba(255,99,132,1)",
-                'data' => [28, 48, 40, 19, 96, 27, 100]
+                'data' => [7,9,11,12,13,15,16,18,21,22,22,25]
             ]
         ]
     ]

@@ -17,7 +17,7 @@ class PerkembanganKesehatanSearch extends PerkembanganKesehatan
     public function rules()
     {
         return [
-            [['id_perkembangan', 'identitas_anggota', 'keluhan', 'tgl_pemeriksaan', 'pemeriksa'], 'safe'],
+            [['id_perkembangan', 'identitas_anggota', 'keluhan', 'tgl_pemeriksaan'], 'safe'],
             [['lingkar_perut', 'berat_badan', 'tinggi_badan'], 'integer'],
         ];
     }
@@ -38,9 +38,9 @@ class PerkembanganKesehatanSearch extends PerkembanganKesehatan
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $id)
     {
-        $query = PerkembanganKesehatan::find();
+        $query = PerkembanganKesehatan::find()->where(['identitas_anggota' => $id]);
 
         // add conditions that should always apply here
 
@@ -66,8 +66,7 @@ class PerkembanganKesehatanSearch extends PerkembanganKesehatan
 
         $query->andFilterWhere(['like', 'id_perkembangan', $this->id_perkembangan])
             ->andFilterWhere(['like', 'identitas_anggota', $this->identitas_anggota])
-            ->andFilterWhere(['like', 'keluhan', $this->keluhan])
-            ->andFilterWhere(['like', 'pemeriksa', $this->pemeriksa]);
+            ->andFilterWhere(['like', 'keluhan', $this->keluhan]);
 
         return $dataProvider;
     }

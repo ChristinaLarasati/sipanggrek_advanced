@@ -29,7 +29,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'tgl_pemeriksaan') ?>
 
-    <?php // echo $form->field($model, 'pemeriksa') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

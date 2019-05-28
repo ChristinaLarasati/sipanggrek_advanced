@@ -10,6 +10,14 @@ use dosamigos\chartjs\ChartJs;
 
 $this->title = 'Perkembangan Kesehatan';
 $this->params['breadcrumbs'][] = $this->title;
+
+$a = array();
+$c = array();
+foreach($data as $d){
+    $a[] = $d->tinggi_badan;
+    $c[] = $d->berat_badan;
+}
+
 ?>
 <div class="perkembangan-kesehatan-index">
 
@@ -34,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //'tinggi_badan',
             'keluhan',
             //'tgl_pemeriksaan',
-            //'pemeriksa',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
@@ -49,8 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'width' => 300
     ],
     'data' => [
-        'labels' => ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",
-                    "September", "Oktober", "November", "Desember"],
+        'labels' => ["Kunjungan I", "Kunjungan II", "Kunjungan III", "Kunjungan IV", "Kunjungan V", "Kunjungan VI", "Kunjungan VII", 
+        "Kunjungan VIII", "Kunjungan IX", "Kunjungan X", "Kunjungan XI", "Kunjungan XII"],
         'datasets' => [
             [
                 'label' => "Berat Badan",
@@ -60,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pointBorderColor' => "#fff",
                 'pointHoverBackgroundColor' => "#fff",
                 'pointHoverBorderColor' => "rgba(179,181,198,1)",
-                'data' => [10,12,15,17,19,23,25,27,29,31,35,36]
+                'data' => $c
             ],
             [
                 'label' => "Tinggi Badan",
@@ -70,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pointBorderColor' => "#fff",
                 'pointHoverBackgroundColor' => "#fff",
                 'pointHoverBorderColor' => "rgba(255,99,132,1)",
-                'data' => [7,9,11,12,13,15,16,18,21,22,22,25]
+                'data' => $a
             ]
         ]
     ]

@@ -54,7 +54,17 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'no_hp_orangtua')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tgl_pendaftaran')->textInput() ?>
+    <?= $form->field($model, 'tgl_pendaftaran')->widget(
+        DatePicker::className(), [
+        // inline too, not bad
+        'inline' => false, 
+         // modify template for custom rendering
+         //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+         'clientOptions' => [
+             'autoclose' => true,
+             'format' => 'yyyy-mm-dd'
+             ]
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

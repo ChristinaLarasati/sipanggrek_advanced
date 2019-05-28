@@ -33,14 +33,17 @@ class PerkembanganKesehatanController extends Controller
      * Lists all PerkembanganKesehatan models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
         $searchModel = new PerkembanganKesehatanSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
+
+        $data =  PerkembanganKesehatan::find()->where(['identitas_anggota' => $id])->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data' => $data,
         ]);
     }
 
@@ -124,4 +127,16 @@ class PerkembanganKesehatanController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function kesehatan($id)
+    {
+        // $model = $this -> findModel($id);
+        // return $this->redirect(['views/perkembangan-kesehatan/perkembangankesehatan']);
+
+        return $this->render('perkembangankesehatan', [
+            'model' => $this->findModel($id),
+        ]);
+        
+    }
+
 }

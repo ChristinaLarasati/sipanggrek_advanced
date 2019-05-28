@@ -4,6 +4,8 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\AnggotaPosyandu;
+use frontend\models\PerkembanganKesehatan;
+use yii\data\ActiveDataProvider;
 use frontend\models\search\AnggotaPosyanduSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -96,6 +98,54 @@ class AnggotaPosyanduController extends Controller
             'model' => $model,
         ]);
     }
+
+        /**
+     * Updates an existing AnggotaPosyandu model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param string $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+
+    public function actionKesehatan($id)
+    {
+        $query = PerkembanganKesehatan::find()->where(['identitas_anggota'=>$id])->all();
+        
+        $dataProvider = new ActiveDataProvider([
+            'query'=>$query
+            ]);
+            
+
+        return $this->redirect('perkembangankesehatan', [
+            //'dataProvider' => $dataProvider,
+            // $posts = $dataProvider->getModels()
+        ]);
+        
+    }
+
+    public function actionCekkes($id)
+    {
+        $anggota = AnggotaPosyandu::find()->where(['nik' => $id])->one();
+        $model = new PerkembanganKesehatan();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->identitas_anggota = $anggota->nik;
+            
+            $model->save();
+            // echo "<pre>"; print_r($model); die();
+            return $this->redirect(['view', 'id' => $anggota->nik]);
+        }
+        else{
+            return $this->render('/perkembangan-kesehatan/createCekKesehatan', 
+            [
+                'anggota' => $anggota,
+                'model' => $model,
+            ]);
+        }
+
+        
+    }
+
 
     /**
      * Deletes an existing AnggotaPosyandu model.

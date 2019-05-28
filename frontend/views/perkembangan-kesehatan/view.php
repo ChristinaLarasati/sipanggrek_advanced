@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tinggi_badan',
             'keluhan',
             'tgl_pemeriksaan',
-            'pemeriksa',
+        
         ],
     ]) ?>
 

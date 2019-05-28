@@ -20,7 +20,6 @@ use Yii;
  * @property string $pekerjaan
  * @property string $no_hp
  * @property string $no_hp_orangtua
- * @property string $foto_anggota
  * @property string $tgl_pendaftaran
  *
  * @property Akun[] $akun
@@ -46,15 +45,12 @@ class AnggotaPosyandu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nik', 'nama_anggota', 'peran', 'tempat_lahir', 'tgl_lahir', 'gender', 'alamat', 'foto_anggota', 'tgl_pendaftaran'], 'required'],
+            [['nik', 'nama_anggota', 'peran', 'tempat_lahir', 'tgl_lahir', 'gender', 'alamat', 'tgl_pendaftaran'], 'required'],
             [['tgl_lahir', 'tgl_pendaftaran'], 'safe'],
             [['nik', 'nama_anggota', 'peran', 'tempat_lahir', 'alamat', 'nama_ayah', 'nama_ibu', 'nama_suami', 'pekerjaan'], 'string', 'max' => 32],
             [['gender', 'no_hp', 'no_hp_orangtua'], 'string', 'max' => 16],
-            [['foto_anggota'], 'string', 'max' => 255],
             [['nik'], 'unique'],
             [['peran'], 'exist', 'skipOnError' => true, 'targetClass' => Role::className(), 'targetAttribute' => ['peran' => 'id_role']],
-            [['file'], 'safe'],
-            [['file'], 'file', 'extensions'=>'jpg, gif, png'],
         ];
     }
 
@@ -77,8 +73,7 @@ class AnggotaPosyandu extends \yii\db\ActiveRecord
             'pekerjaan' => 'Pekerjaan',
             'no_hp' => 'No Hp',
             'no_hp_orangtua' => 'No Hp Orangtua',
-            'tgl_pendaftaran' => 'Tgl Pendaftaran',
-            'file' => 'Foto Anggota'
+            'tgl_pendaftaran' => 'Tgl Pendaftaran'
         ];
     }
 

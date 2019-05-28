@@ -28,10 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'nik',
             'nama_anggota',
-            [
-                'attribute' => 'peran',
-                'value' => 'peran',
-            ],
+            //[
+               // 'attribute' => 'peran',
+              //  'value' => 'peran',
+            // ],
             //'tempat_lahir',
             //'tgl_lahir',
             //'gender',

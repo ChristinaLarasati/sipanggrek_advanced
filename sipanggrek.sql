@@ -16,27 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`sipanggrek` /*!40100 DEFAULT CHARACTER 
 
 USE `sipanggrek`;
 
-/*Table structure for table `akun` */
-
-DROP TABLE IF EXISTS `akun`;
-
-CREATE TABLE `akun` (
-  `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `nik_anggota` varchar(32) DEFAULT NULL,
-  `id_petugas` varchar(32) DEFAULT NULL,
-  `peran_pengguna` varchar(32) NOT NULL,
-  PRIMARY KEY (`username`),
-  KEY `akun_idfk_1` (`nik_anggota`),
-  KEY `akun_idfk_2` (`id_petugas`),
-  KEY `akun_idfk_3` (`peran_pengguna`),
-  CONSTRAINT `akun_idfk_1` FOREIGN KEY (`nik_anggota`) REFERENCES `anggota_posyandu` (`nik`),
-  CONSTRAINT `akun_idfk_2` FOREIGN KEY (`id_petugas`) REFERENCES `petugas_posyandu` (`nik_petugas`),
-  CONSTRAINT `akun_idfk_3` FOREIGN KEY (`peran_pengguna`) REFERENCES `role` (`id_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `akun` */
-
 /*Table structure for table `anggota_posyandu` */
 
 DROP TABLE IF EXISTS `anggota_posyandu`;
@@ -64,10 +43,11 @@ CREATE TABLE `anggota_posyandu` (
 /*Data for the table `anggota_posyandu` */
 
 insert  into `anggota_posyandu`(`nik`,`nama_anggota`,`peran`,`tempat_lahir`,`tgl_lahir`,`gender`,`alamat`,`nama_ayah`,`nama_ibu`,`nama_suami`,`pekerjaan`,`no_hp`,`no_hp_orangtua`,`tgl_pendaftaran`) values 
-('1202092006980005','Sinta Simanjuntak','sipanggota01','Sosor Tolong','0000-00-00','Perempuan','Parsoburan','','','Adiputra Sinaga','PNS','123654789','','0000-00-00'),
-('121204310317000','Pangeran Pardosi','sipanggota02','Gotting','0000-00-00','Laki-laki','Gotting','Nurdin Pardosi','','','','','081245612378','0000-00-00'),
-('1212045402170001','Charissa Hutajulu','sipanggota02','Gotting','0000-00-00','Perempuan','Gotting','Marulitua Hutajulu','','','','','085354232759','0000-00-00'),
-('1217094106980004','Rusminah Siahaan','sipanggota02','Sosor Tolong','0000-00-00','Perempuan','Lumban Simarmata','Ayah Siahaan','Ibu Nadeak','','','','08126571229','0000-00-00');
+('1102026308950001','Irmawati','sipanggota01','Lumban Matio','1995-08-23','Perempuan','Lumban Matio','','','Anto Pardosi','','','','2019-05-15'),
+('1206094809850001','Yanti Nababan','sipanggota01','Gotting','1985-09-08','Perempuan','Gotting','','','Jekson Situmorang','','','','2019-05-14'),
+('1212043103170001','Pangeran Pardosi','sipanggota02','Gotting','2017-03-31','Laki-laki','Gotting','Nurdin Pardosi','','','','','','2019-05-16'),
+('1212045402170001','Charissa Hutajulu','sipanggota02','Gotting','2017-02-24','Perempuan','Gotting','Marulitua Hutajulu','','','','','085354232759','2019-05-15'),
+('1212046112170001','Felicia Pardosi','sipanggota02','Gotting','2017-12-21','Perempuan','Gotting','Robinhot Pardosi','','','','','','2019-05-15');
 
 /*Table structure for table `berita_posyandu` */
 
@@ -82,9 +62,6 @@ CREATE TABLE `berita_posyandu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `berita_posyandu` */
-
-insert  into `berita_posyandu`(`id_berita`,`judul`,`isi_berita`,`tgl_unggah`) values 
-('BKP001','Cacar Monyet: Gejala, Penyebab, dan Pengobatan','Cacar monyet adalah penyakit zoonosis virus langka yang terjadi terutama di bagian terpencil Afrika tengah dan barat. Bagaimana gejala penyakit ini?  Dari situs Kemenkes, masa inkubasi atau interval dari infeksi sampai timbulnya gejala cacar monyet biasanya 6-16 hari, tetapi dapat berkisar dari 5-21 hari. Gejala yang timbul berupa demam, sakit kepala hebat, limfadenopati (pembesaran kelenjar getah bening), nyeri punggung, nyeri otot, dan lemas. Masyarakat diimbau untuk waspada.','2019-05-23');
 
 /*Table structure for table `imunisasi_anak` */
 
@@ -130,25 +107,28 @@ insert  into `migration`(`version`,`apply_time`) values
 DROP TABLE IF EXISTS `perkembangan_kesehatan`;
 
 CREATE TABLE `perkembangan_kesehatan` (
-  `id_perkembangan` varchar(16) NOT NULL,
+  `id_perkembangan` int(11) NOT NULL AUTO_INCREMENT,
   `identitas_anggota` varchar(32) NOT NULL,
   `lingkar_perut` int(11) DEFAULT NULL,
   `berat_badan` int(11) NOT NULL,
   `tinggi_badan` int(11) DEFAULT NULL,
   `keluhan` varchar(64) DEFAULT NULL,
   `tgl_pemeriksaan` date NOT NULL,
-  `pemeriksa` varchar(32) NOT NULL,
   PRIMARY KEY (`id_perkembangan`),
   KEY `perkembangan_kesehatan_idfk_1` (`identitas_anggota`),
-  KEY `perkembangan_kesehatan_idfk_2` (`pemeriksa`),
-  CONSTRAINT `perkembangan_kesehatan_idfk_1` FOREIGN KEY (`identitas_anggota`) REFERENCES `anggota_posyandu` (`nik`),
-  CONSTRAINT `perkembangan_kesehatan_idfk_2` FOREIGN KEY (`pemeriksa`) REFERENCES `petugas_posyandu` (`nik_petugas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `perkembangan_kesehatan_idfk_1` FOREIGN KEY (`identitas_anggota`) REFERENCES `anggota_posyandu` (`nik`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `perkembangan_kesehatan` */
 
-insert  into `perkembangan_kesehatan`(`id_perkembangan`,`identitas_anggota`,`lingkar_perut`,`berat_badan`,`tinggi_badan`,`keluhan`,`tgl_pemeriksaan`,`pemeriksa`) values 
-('PK001','1217094106980004',NULL,12,89,'Demam naik turun','0000-00-00','1202015106990001');
+insert  into `perkembangan_kesehatan`(`id_perkembangan`,`identitas_anggota`,`lingkar_perut`,`berat_badan`,`tinggi_badan`,`keluhan`,`tgl_pemeriksaan`) values 
+(6,'1206094809850001',30,10,75,'Demam naik turun','2019-05-16'),
+(7,'1206094809850001',55,65,122,'flu','2019-06-07'),
+(8,'1206094809850001',95,74,170,'step','2019-05-28'),
+(9,'1102026308950001',95,70,165,'Pusing-pusing','2019-05-25'),
+(10,'1102026308950001',102,72,165,'Diare','2019-05-18'),
+(11,'1102026308950001',104,74,165,'','2019-05-20'),
+(12,'1102026308950001',105,74,166,'','2019-05-22');
 
 /*Table structure for table `petugas_posyandu` */
 
@@ -168,7 +148,7 @@ CREATE TABLE `petugas_posyandu` (
 /*Data for the table `petugas_posyandu` */
 
 insert  into `petugas_posyandu`(`nik_petugas`,`nama_petugas`,`peran_petugas`,`no_hp_petugas`,`tgl_daftar`) values 
-('1202015106990001','Tessa Maretta','sippetugas','082212345678','0000-00-00');
+('1202015106990027','Sartika Aritonang','sippetugas','081296321785','2019-03-21');
 
 /*Table structure for table `role` */
 
@@ -185,7 +165,7 @@ CREATE TABLE `role` (
 insert  into `role`(`id_role`,`nama_role`) values 
 ('sipadmin','Admin SIP Anggrek'),
 ('sipanggota01','Anggota - Ibu Hamil'),
-('sipanggota02','Anggota - Orang Tua Anak'),
+('sipanggota02','Anggota - Anak'),
 ('sippetugas','Petugas Posyandu');
 
 /*Table structure for table `user` */
@@ -194,22 +174,27 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `role` tinyint(1) DEFAULT NULL,
+  `auth_key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` smallint(6) DEFAULT '10',
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
   `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `user` */
+
+insert  into `user`(`id`,`username`,`role`,`auth_key`,`password_hash`,`password_reset_token`,`email`,`status`,`created_at`,`updated_at`,`verification_token`) values 
+(1,'Irmawati',2,'2x5grgWQ7qVM0DvFMOiiiDb6sDuL-ors','$2y$13$sgEEJY3hm2RZC8JL163yNenJuHGMIEsnvqWa1BSlLWrL2ElmT6YFq',NULL,NULL,10,NULL,NULL,NULL),
+(2,'Admin',1,'rfcd3dptPVkf2HCf_Cs2J7ciA-yjct-u','$2y$13$MmZ7SisI2NHbQQkdRB6/OO22DLScxAY0eJZTecepgGPq3S2yWi.da',NULL,NULL,10,NULL,NULL,NULL);
 
 /*Table structure for table `vaksin` */
 
@@ -222,6 +207,21 @@ CREATE TABLE `vaksin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `vaksin` */
+
+insert  into `vaksin`(`id_vaksin`,`nama_vaksin`) values 
+('VIA001','Hepatitis B (HB)'),
+('VIA002','Polio'),
+('VIA003','BCG'),
+('VIA004','DTP'),
+('VIA005','Pneumokokus(PCV)'),
+('VIA006','Rotavirus'),
+('VIA007','Influenza'),
+('VIA008','Campak'),
+('VIA009','MMR/MR'),
+('VIA010','Varisela'),
+('VIA011','HPV'),
+('VIA012','JE'),
+('VIA013','Dengue');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "perkembangan_kesehatan".
  *
- * @property string $id_perkembangan
+ * @property int $id_perkembangan
  * @property string $identitas_anggota
  * @property int $lingkar_perut
  * @property int $berat_badan
@@ -35,16 +35,13 @@ class PerkembanganKesehatan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_perkembangan', 'identitas_anggota', 'berat_badan', 'tgl_pemeriksaan', 'pemeriksa'], 'required'],
+            [['identitas_anggota', 'berat_badan', 'tgl_pemeriksaan'], 'required'],
             [['lingkar_perut', 'berat_badan', 'tinggi_badan'], 'integer'],
             [['tgl_pemeriksaan'], 'safe'],
-            [['id_perkembangan'], 'string', 'max' => 16],
-            [['identitas_anggota', 'pemeriksa'], 'string', 'max' => 32],
+            [['identitas_anggota'], 'string', 'max' => 32],
             [['keluhan'], 'string', 'max' => 64],
-            [['id_perkembangan'], 'unique'],
             [['identitas_anggota'], 'exist', 'skipOnError' => true, 'targetClass' => AnggotaPosyandu::className(), 'targetAttribute' => ['identitas_anggota' => 'nik']],
-            [['pemeriksa'], 'exist', 'skipOnError' => true, 'targetClass' => PetugasPosyandu::className(), 'targetAttribute' => ['pemeriksa' => 'nik_petugas']],
-        ];
+            ];
     }
 
     /**

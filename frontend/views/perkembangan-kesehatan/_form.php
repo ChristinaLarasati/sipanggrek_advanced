@@ -37,7 +37,6 @@ use dosamigos\datepicker\DatePicker;
              ]
     ]); ?>
 
-    <?= $form->field($model, 'pemeriksa')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

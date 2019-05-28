@@ -10,8 +10,6 @@ use Yii;
  * @property string $nik_petugas
  * @property string $nama_petugas
  * @property string $peran_petugas
- * @property string $no_hp_petugas
- * @property string $foto_petugas
  * @property string $tgl_daftar
  *
  * @property Akun[] $akun
@@ -35,11 +33,10 @@ class PetugasPosyandu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nik_petugas', 'nama_petugas', 'peran_petugas', 'no_hp_petugas', 'foto_petugas', 'tgl_daftar'], 'required'],
+            [['nik_petugas', 'nama_petugas', 'peran_petugas', 'no_hp_petugas', 'tgl_daftar'], 'required'],
             [['tgl_daftar'], 'safe'],
             [['nik_petugas', 'nama_petugas', 'peran_petugas'], 'string', 'max' => 32],
             [['no_hp_petugas'], 'string', 'max' => 16],
-            [['foto_petugas'], 'string', 'max' => 255],
             [['nik_petugas'], 'unique'],
             [['peran_petugas'], 'exist', 'skipOnError' => true, 'targetClass' => Role::className(), 'targetAttribute' => ['peran_petugas' => 'id_role']],
         ];

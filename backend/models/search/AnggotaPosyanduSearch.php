@@ -1,13 +1,13 @@
 <?php
 
-namespace backend\models\search;
+namespace frontend\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\AnggotaPosyandu;
+use frontend\models\AnggotaPosyandu;
 
 /**
- * AnggotaPosyanduSearch represents the model behind the search form of `backend\models\AnggotaPosyandu`.
+ * AnggotaPosyanduSearch represents the model behind the search form of `frontend\models\AnggotaPosyandu`.
  */
 class AnggotaPosyanduSearch extends AnggotaPosyandu
 {

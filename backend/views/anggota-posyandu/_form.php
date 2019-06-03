@@ -3,17 +3,15 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use backend\models\Role;
-use backend\models\User;
+use frontend\models\Role;
 use dosamigos\datepicker\DatePicker;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\AnggotaPosyandu */
+/* @var $model frontend\models\AnggotaPosyandu */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="anggota-posyandu-form">
-
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 

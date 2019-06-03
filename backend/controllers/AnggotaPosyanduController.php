@@ -1,12 +1,12 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use backend\models\AnggotaPosyandu;
-use backend\models\PerkembanganKesehatan;
+use frontend\models\AnggotaPosyandu;
+use frontend\models\PerkembanganKesehatan;
 use yii\data\ActiveDataProvider;
-use backend\models\search\AnggotaPosyanduSearch;
+use frontend\models\search\AnggotaPosyanduSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,17 +26,6 @@ class AnggotaPosyanduController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                ],
-            ],
-
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index', 'update', 'view', 'delete'],
-                        'allow' => true,
-                        'role' => ['1', '2', '3', '4'],
-                    ],
                 ],
             ],
         ];
@@ -189,6 +178,6 @@ class AnggotaPosyanduController extends Controller
     }
 
     public  function buatKoneksi(){
-        $koneksi = mysqli_connect("localhost","root","","backend/views/perkembangan-kesehatan");
+        $koneksi = mysqli_connect("localhost","root","","frontend/views/perkembangan-kesehatan");
     }
 }

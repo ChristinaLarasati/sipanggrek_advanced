@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\AnggotaPosyandu */
+/* @var $model frontend\models\AnggotaPosyandu */
 
 $this->title = $model->nama_anggota;
 $this->params['breadcrumbs'][] = ['label' => 'Anggota Posyandu', 'url' => ['index']];
@@ -22,7 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Detail Perkembangan Kesehatan', 
         ['/perkembangan-kesehatan/index', 'id' => $model->nik], ['class' => 'btn btn-info']) ?>
     </p>
-
 
     <?= DetailView::widget([
         'model' => $model,
